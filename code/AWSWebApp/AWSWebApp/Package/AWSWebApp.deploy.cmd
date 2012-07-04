@@ -131,8 +131,8 @@ set _MsDeployAdditionalFlags=%_MsDeployAdditionalFlags% %_ArgMsDeployAdditionalF
 @rem ---------------------------------------------------------------------------------
 @rem check the existence of the package file
 @rem ---------------------------------------------------------------------------------
-if not exist "%RootPath%AWSWebApp.zip" (
-echo "%RootPath%AWSWebApp.zip" does not exist. 
+if not exist "%RootPath%Archive" (
+echo "%RootPath%Archive" does not exist. 
 echo This batch file relies on this deploy source file^(s^) in the same folder.
 goto :usage
 )
@@ -144,11 +144,11 @@ call :CheckParameterFile
 echo. Start executing msdeploy.exe
 echo -------------------------------------------------------
 if  not exist "%_DeploySetParametersFile%" (
-echo. "%MSDeployPath%\msdeploy.exe" -source:package='%RootPath%AWSWebApp.zip' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension %_MsDeployAdditionalFlags%
-"%MSDeployPath%\msdeploy.exe" -source:package='%RootPath%AWSWebApp.zip' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension %_MsDeployAdditionalFlags%
+echo. "%MSDeployPath%\msdeploy.exe" -source:archiveDir='%RootPath%Archive' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension %_MsDeployAdditionalFlags%
+"%MSDeployPath%\msdeploy.exe" -source:archiveDir='%RootPath%Archive' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension %_MsDeployAdditionalFlags%
 ) else (
-echo. "%MSDeployPath%\msdeploy.exe" -source:package='%RootPath%AWSWebApp.zip' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:"%RootPath%AWSWebApp.SetParameters.xml" %_MsDeployAdditionalFlags%
-"%MSDeployPath%\msdeploy.exe" -source:package='%RootPath%AWSWebApp.zip' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:"%RootPath%AWSWebApp.SetParameters.xml" %_MsDeployAdditionalFlags%
+echo. "%MSDeployPath%\msdeploy.exe" -source:archiveDir='%RootPath%Archive' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:"%RootPath%AWSWebApp.SetParameters.xml" %_MsDeployAdditionalFlags%
+"%MSDeployPath%\msdeploy.exe" -source:archiveDir='%RootPath%Archive' -dest:%_Destination% -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:"%RootPath%AWSWebApp.SetParameters.xml" %_MsDeployAdditionalFlags%
 )
 goto :eof
 

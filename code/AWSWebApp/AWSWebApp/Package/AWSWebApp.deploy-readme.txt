@@ -4,7 +4,7 @@ Prerequisites :
 --------------------------
 To deploy this Web package, Web Deploy (msdeploy.exe) must be installed on the computer that runs the .cmd file. For information about how to install Web Deploy, see the following URL:
 http://go.microsoft.com/?linkid=9278654
-This batch file requires that the package file "AWSWebApp.zip" and optionally provided the parameters file "AWSWebApp.SetParameters.xml" in the same folder or destination folder by environment variable.
+This batch file requires that the package file "Archive" and optionally provided the parameters file "AWSWebApp.SetParameters.xml" in the same folder or destination folder by environment variable.
 
 ===========================
 Usage:
